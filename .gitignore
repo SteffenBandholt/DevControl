@@ -7,3 +7,9 @@ _patch_backups/
 Thumbs.db
 *.log
 *.bak
+*.orig
+*.tmp
+*.old
+*.swp
+*.~*
+server.js.bak2
