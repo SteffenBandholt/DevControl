@@ -323,19 +323,11 @@ async function validateActiveProject() {
 
 
 async function saveCurrentProjectSelection() {
+  // Unified activation path: delegate to activateProject()
   try {
-    beginBusy("Projekt wird gespeichert ...", ["saveCurrentProjectBtn"], "Aktives Projekt wird gespeichert ...");
-    const projectId = document.getElementById("projectSelect").value;
-    await api("/api/projects/active", {
-      timeoutMs: 15000,
-      method: "POST",
-      body: JSON.stringify({ projectId })
-    });
-    await loadProjects();
-    await loadMeta();
-    endBusy("Aktives Projekt gespeichert.", ["saveCurrentProjectBtn"]);
+    await activateProject();
   } catch (error) {
-    endBusy("", ["saveCurrentProjectBtn"], error);
+    // activateProject handles busy state and errors
   }
 }
 
