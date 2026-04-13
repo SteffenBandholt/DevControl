@@ -254,7 +254,6 @@ app.post("/api/packages", async (req, res) => {
 
     const state = loadState(root);
     state.activePackageId = pkg.id;
-    state.activeProjectId = pkg.projectId;
     state.status = "planned";
     saveState(root, state);
 
@@ -314,7 +313,6 @@ app.post("/api/packages/:id/run", async (req, res) => {
 
     const state = loadState(root);
     state.activePackageId = finished.status === "running" ? finished.id : null;
-    state.activeProjectId = finished.projectId;
     state.status = finished.status;
     saveState(root, state);
 
