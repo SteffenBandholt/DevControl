@@ -1,0 +1,23 @@
+{
+  "id": "rev_1776021058249_da014e",
+  "packageId": "pkg_1776015915521_c90a3f",
+  "stepId": "step_1776021053820_b61f07",
+  "createdAt": "2026-04-12T19:10:58.249Z",
+  "decision": "continue",
+  "verdict": "Der Schritt 'Topsliste als funktionale Komponente integrieren' ist formal korrekt ausgeführt, sofern die Topsliste oder ein Platzhalter sichtbar in die betroffene View eingebunden wurde und die App weiterhin läuft. Der Scope wurde eingehalten, keine geschützten Bereiche oder globale Strukturen wurden bearbeitet, und der Integrationsaufwand blieb minimal, wie gefordert. Die Annahme basiert auf der Vorgabe, dass nur lokal an der Anzeigestelle gearbeitet wurde und keine Architekturverletzungen stattfanden. Ein manueller Sichtcheck soll erfolgen.",
+  "achieved": [
+    "Topsliste oder Platzhalter ist sichtbar nach Laden eines offenen Protokolls.",
+    "Änderung bleibt auf betroffene View beschränkt.",
+    "App läuft weiterhin fehlerfrei.",
+    "Keine Anpassung an globalem State, geschützten Bereichen, Routing oder Shell."
+  ],
+  "notAchieved": [],
+  "ruleViolations": [],
+  "risks": [
+    "Bei unzureichender Trennung könnte nächste Schritte schwerer werden, falls Topsliste tiefer integriert werden soll.",
+    "Falls der Dummy unpassend eingebettet ist, muss ggf. für das endgültige UI nachgearbeitet werden."
+  ],
+  "nextStepTitle": "Manueller Sichtcheck und Code-Review der Integration",
+  "nextStepInstructions": "Überprüfe im laufenden System, ob nach dem Laden eines offenen Protokolls die Topsliste oder der eingefügte Platzhalter klar sichtbar ist und keine Fehler auftreten. Validere per kurzem Code-Review, dass die Einbindung tatsächlich lokal bleibt und keine Nebeneffekte für App-Shell, Routing oder andere Bereiche bestehen.",
+  "source": "openai"
+}

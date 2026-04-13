@@ -1,0 +1,23 @@
+{
+  "id": "rev_1776021053818_0fe313",
+  "packageId": "pkg_1776015915521_c90a3f",
+  "stepId": "step_1776021049893_804504",
+  "createdAt": "2026-04-12T19:10:53.818Z",
+  "decision": "continue",
+  "verdict": "Der Integrationsschritt erfüllt die Anforderungen zur Sichtbarmachung der Topsliste (bzw. eines Platzhalters) beim Laden eines offenen Protokolls, ohne bestehende globale Strukturen oder geschützte Bereiche anzutasten. Die Änderung ist lokal beschränkt und nicht unnötig breit ausgefallen. Die App läuft weiterhin anstandslos, ein manueller Check ist möglich. Alle Review-Regeln wurden beachtet, keine Regelverletzungen festgestellt. Die nächsten Integrationsschritte sind logisch ableitbar.",
+  "achieved": [
+    "Topsliste oder Platzhalter erscheint sichtbar beim Laden eines offenen Protokolls",
+    "Änderung bleibt lokal begrenzt",
+    "App funktioniert weiterhin korrekt",
+    "Geschützte Bereiche sind unangetastet",
+    "Manueller Check möglich"
+  ],
+  "notAchieved": [],
+  "ruleViolations": [],
+  "risks": [
+    "Der Platzhalter ist nur ein Zwischenschritt; Nachfolgeintegration einer echten Komponente ist ein separater Arbeitsschritt"
+  ],
+  "nextStepTitle": "Topsliste als funktionale Komponente integrieren",
+  "nextStepInstructions": "Ersetze den Platzhalter durch eine echte, minimal funktionale Topsliste-Komponente. Achte erneut strikt darauf, dass Änderungen auf die entsprechende Protokoll-View beschränkt bleiben und keinerlei globale Strukturen unbeabsichtigt betroffen sind. Baue verlässliche Komponententests für das neue Modul ein.",
+  "source": "openai"
+}

@@ -1,0 +1,27 @@
+{
+  "id": "rev_1776022820738_53e206",
+  "packageId": "pkg_1776017298272_ea38b3",
+  "stepId": "step_1776017298272_ca9c32",
+  "createdAt": "2026-04-12T19:40:20.738Z",
+  "decision": "blocked",
+  "verdict": "Die Datei 'devcontrol_testpackage.md' wurde laut Codex-Ausgabe noch nicht angelegt bzw. es wurde keine Ausführung vorgenommen. Der Schritt kann nicht fortgesetzt werden, da der erforderliche Inhalt und die Datei fehlen.",
+  "achieved": [],
+  "notAchieved": [
+    "Die Datei 'devcontrol_testpackage.md' existiert im Projektverzeichnis.",
+    "Der Inhalt ist wie vorgegeben.",
+    "Review-Prozess wird durch dieses Paket aktiviert."
+  ],
+  "ruleViolations": [
+    "Wurde das konkrete Ziel erreicht? Nein.",
+    "Wurde der Scope eingehalten? Nicht überprüfbar, da keine Änderung.",
+    "Ist die Änderung unnötig breit geworden? Nicht zutreffend, da keine Änderung.",
+    "Ist der nächste Schritt logisch ableitbar? Nein: Ausführung fehlt."
+  ],
+  "risks": [
+    "Ohne die Testdatei kann das Review-Framework nicht aktiviert werden.",
+    "Fehlende Datei verursacht Blockade der Paket-Prüfung."
+  ],
+  "nextStepTitle": "Lege die Testdatei an",
+  "nextStepInstructions": "Lege die Datei 'devcontrol_testpackage.md' im Projektverzeichnis exakt entsprechend der Vorgaben an, ohne andere Dateien oder Bereiche zu verändern.",
+  "source": "openai"
+}

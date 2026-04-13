@@ -1,0 +1,23 @@
+{
+  "activeProjectId": "bbm-produktiv",
+  "projects": [
+    {
+      "id": "bbm-protokoll",
+      "name": "BBM-Protokoll",
+      "projectPath": "C:\\01_Projekte\\Protokoll",
+      "agentsFile": "C:\\01_Projekte\\Protokoll\\agent.md",
+      "defaultPackageType": "refactor",
+      "protectedAreas": [],
+      "defaultConstraints": []
+    },
+    {
+      "id": "bbm-produktiv",
+      "name": "BBM-Produktiv",
+      "projectPath": "C:\\01_Projekte\\BBM-Produktiv",
+      "agentsFile": "C:\\01_Projekte\\BBM-Produktiv\\Agents.md",
+      "defaultPackageType": "refactor",
+      "protectedAreas": [],
+      "defaultConstraints": []
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "pkg_1776017298272_ea38b3",
+  "projectId": "bbm-protokoll",
+  "projectName": "BBM-Protokoll",
+  "createdAt": "2026-04-12T18:08:18.272Z",
+  "updatedAt": "2026-04-12T19:40:20.739Z",
+  "status": "blocked",
+  "priority": "normal",
+  "strictness": "conservative",
+  "rawGoal": "Testpaket fuer Planner",
+  "packageName": "Refactoring-Testpaket-fuer-DevControl-Planner",
+  "packageType": "refactor",
+  "goal": [
+    "Erzeuge ein minimales 'Refactor-Testpaket' für DevControl Planner, um die Funktionen und die Review-Rules des Planners praktisch zu testen.",
+    "Das Paket soll keinerlei inhaltliche Änderungen am Legacy-Code auslösen.",
+    "Der Zweck ist ausschließlich, das Review- und Prozess-Framework zu aktivieren und prüfbar bereitzustellen."
+  ],
+  "scope": [
+    "Lege eine Datei 'devcontrol_testpackage.md' im Projektordner 'C:\\01_Projekte\\Protokoll' an.",
+    "Die Datei enthält einen kurzen Text: 'Testpaket wurde angelegt. Keine Codeänderungen. Nur für DevControl-Review.'"
+  ],
+  "doNotTouch": [
+    "src/main/",
+    "src/renderer/",
+    "bestehende JavaScript-, React- oder Infrastrukturdateien",
+    "geschützte Bereiche",
+    "Business-Logik, Router, IPC, Shell"
+  ],
+  "constraints": [
+    "Es dürfen keine bestehenden Dateien verändert oder gelöscht werden.",
+    "Es müssen alle geschützten Bereiche laut Projektregeln beachtet werden.",
+    "Review-Rules und Projektprinzipien müssen eingehalten werden.",
+    "Der Scope darf nicht überschritten werden.",
+    "Keine unnötige Breite: Nur die Testdatei wird angelegt."
+  ],
+  "successCriteria": [
+    "Die Datei 'devcontrol_testpackage.md' existiert im Projektverzeichnis.",
+    "Der Inhalt ist wie vorgegeben, keine Abweichungen.",
+    "Keine Nebenwirkungen im Legacy-Code.",
+    "Review-Prozess wird durch dieses Paket aktiviert."
+  ],
+  "abortCriteria": [
+    "Es wird versehentlich Code verändert.",
+    "Bestehende Dateien wurden modifiziert.",
+    "Der Planner beginnt ungewollt weitere Migrationen oder Teilpakete.",
+    "Das Testpaket ist mehr als die eine Datei."
+  ],
+  "internalSteps": [
+    {
+      "id": "step_1776017298272_ca9c32",
+      "order": 1,
+      "status": "blocked",
+      "title": "Lege die Datei 'devcontrol_testpackage.md' mit dem Testtext im Projektordner an.",
+      "instructions": "Erzeuge im Projektordner 'C:\\01_Projekte\\Protokoll' eine neue Datei namens 'devcontrol_testpackage.md'. Trage folgenden Text ein: 'Testpaket wurde angelegt. Keine Codeänderungen. Nur für DevControl-Review.' Es dürfen keine weiteren Dateien angelegt oder verändert werden.",
+      "createdAt": "2026-04-12T18:08:18.272Z",
+      "startedAt": "2026-04-12T19:40:16.810Z",
+      "finishedAt": "2026-04-12T19:40:16.843Z",
+      "runId": "run_1776022816811_bfdbd2",
+      "reviewId": "rev_1776022820738_53e206"
+    }
+  ],
+  "summary": "Planner ueber OpenAI erstellt",
+  "finalVerdict": "Die Datei 'devcontrol_testpackage.md' wurde laut Codex-Ausgabe noch nicht angelegt bzw. es wurde keine Ausführung vorgenommen. Der Schritt kann nicht fortgesetzt werden, da der erforderliche Inhalt und die Datei fehlen.",
+  "finalSummary": "Paket blockiert",
+  "blockedReason": "Die Datei 'devcontrol_testpackage.md' existiert im Projektverzeichnis. | Der Inhalt ist wie vorgegeben. | Review-Prozess wird durch dieses Paket aktiviert. | Wurde das konkrete Ziel erreicht? Nein. | Wurde der Scope eingehalten? Nicht überprüfbar, da keine Änderung. | Ist die Änderung unnötig breit geworden? Nicht zutreffend, da keine Änderung. | Ist der nächste Schritt logisch ableitbar? Nein: Ausführung fehlt. | Ohne die Testdatei kann das Review-Framework nicht aktiviert werden. | Fehlende Datei verursacht Blockade der Paket-Prüfung."
+}

@@ -1,0 +1,15 @@
+{
+  "projectName": "MeineElectronApp",
+  "projectPath": "C:\\01_Projekte\\MeineElectronApp",
+  "agentsFile": "C:\\01_Projekte\\MeineElectronApp\\Agents.md",
+  "defaultPackageType": "refactor",
+  "protectedAreas": [
+    "renderer"
+  ],
+  "defaultConstraints": [
+    "Bestehendes Verhalten erhalten",
+    "Keine unn\u00f6tigen Umbenennungen",
+    "Keine neuen Globals",
+    "Kleine nachvollziehbare \u00c4nderungen"
+  ]
+}

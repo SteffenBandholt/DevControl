@@ -1,0 +1,25 @@
+{
+  "id": "rev_1776025244482_651afb",
+  "packageId": "pkg_1776017212219_d5858e",
+  "stepId": "step_1776017212219_1d15a2",
+  "createdAt": "2026-04-12T20:20:44.482Z",
+  "decision": "blocked",
+  "verdict": "Die geforderten Prüfinhalte können nicht bewertet werden, da keine Ausführungsergebnisse, Verzeichnisstruktur oder Testdatei (testplanner.txt) vorgelegt wurden.",
+  "achieved": [],
+  "notAchieved": [
+    "Existenz von testplanner.txt nicht nachweisbar",
+    "Kein Klartextinhalt der Dummy-Testdatei erkennbar",
+    "Keine Bestätigung, dass nur eine Datei erzeugt wurde",
+    "Unklar, ob geschützte Bereiche und Projektregeln eingehalten wurden"
+  ],
+  "ruleViolations": [
+    "Notwendige Artefakte des Schritts fehlen für Review"
+  ],
+  "risks": [
+    "Einfluss auf bestehende Dateien oder Bereiche kann nicht ausgeschlossen werden",
+    "Unbeabsichtigte, nicht prüfbare Seiteneffekte möglich"
+  ],
+  "nextStepTitle": "Dummy-Testdatei und deren Inhalt nachweisen",
+  "nextStepInstructions": "Lege die erstellte Datei testplanner.txt im Projektverzeichnis vor, zeige deren vollständigen Inhalt und beschreibe ggf. wie nachgewiesen wurde, dass ausschließlich diese Datei angelegt wurde und keine anderen Bereiche verändert wurden.",
+  "source": "openai"
+}

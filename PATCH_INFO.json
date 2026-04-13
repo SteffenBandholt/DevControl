@@ -1,0 +1,5 @@
+{
+  "name": "DevControl stable UI patch",
+  "type": "patch_only",
+  "note": "Preserve existing config and data folders."
+}

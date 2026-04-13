@@ -1,0 +1,16 @@
+{
+  "name": "devcontrol",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DevControl - Leitstand fuer kontrollierte Entwicklungs- und Refactoring-Pakete",
+  "main": "app/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node app/server.js",
+    "dev": "node app/server.js",
+    "init": "powershell -ExecutionPolicy Bypass -File .\\scripts\\init-devcontrol.ps1"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

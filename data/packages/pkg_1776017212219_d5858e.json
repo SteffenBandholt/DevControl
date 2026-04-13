@@ -1,0 +1,61 @@
+{
+  "id": "pkg_1776017212219_d5858e",
+  "projectId": "bbm-protokoll",
+  "projectName": "BBM-Protokoll",
+  "createdAt": "2026-04-12T18:06:52.219Z",
+  "updatedAt": "2026-04-12T20:20:44.484Z",
+  "status": "blocked",
+  "priority": "normal",
+  "strictness": "conservative",
+  "rawGoal": "Testpaket fuer Planner",
+  "packageName": "Planner Test Refactor Package",
+  "packageType": "refactor",
+  "goal": [
+    "Erstelle ein minimales, klares Testpaket für den DevControl Planner (refaktorierend, nicht neu entwickelnd), damit die grundsätzliche Funktion des Aufgabenplaners mit typischer Paketstruktur nachgewiesen werden kann."
+  ],
+  "scope": [
+    "Füge in das Projektverzeichnis (C:/01_Projekte/Protokoll) eine Dummy-Testdatei testplanner.txt ein, die als Marker/Testfall für den Refaktor-Workflow dient.",
+    "Trage in der Dummy-Testdatei einen klar markierten Testhinweis ein (z. B. 'Testpaket Planner: Dummy erfolgreich erstellt')."
+  ],
+  "doNotTouch": [
+    "Geschützte Projektbereiche",
+    "Bestehende Produktivdateien oder Quellmodule",
+    "Router, IPC, Preload-Bridge, App-Shell"
+  ],
+  "constraints": [
+    "Die Änderung muss minimal, reversibel und risikolos sein.",
+    "Es darf nichts an bestehendem Code, Routing oder Projektlogik verändert werden.",
+    "Nur eine zusätzliche Dummy-Datei ist erlaubt.",
+    "Das Projektverhalten darf sich nicht ändern."
+  ],
+  "successCriteria": [
+    "Die Datei testplanner.txt existiert im Projektverzeichnis.",
+    "Der Inhalt enthält klar erkennbar den Dummy-Testhinweis.",
+    "Keine anderen Dateien oder Bereiche wurden betroffen.",
+    "Alle bestehenden Projektprüfungen laufen wie gewohnt weiter."
+  ],
+  "abortCriteria": [
+    "Mehr als die eine Testdatei wäre anzupassen.",
+    "Produktivcode würde verändert oder überschrieben.",
+    "Build/Test-Checks schlagen dadurch fehl.",
+    "Eine der Projektregeln wird verletzt."
+  ],
+  "internalSteps": [
+    {
+      "id": "step_1776017212219_1d15a2",
+      "order": 1,
+      "status": "blocked",
+      "title": "Dummy-Testdatei anlegen",
+      "instructions": "Lege im Projektpfad C:/01_Projekte/Protokoll die Datei testplanner.txt an und schreibe darin die Zeile: 'Testpaket Planner: Dummy erfolgreich erstellt.'",
+      "createdAt": "2026-04-12T18:06:52.219Z",
+      "startedAt": "2026-04-12T20:20:40.049Z",
+      "finishedAt": "2026-04-12T20:20:40.087Z",
+      "runId": "run_1776025240051_098b42",
+      "reviewId": "rev_1776025244482_651afb"
+    }
+  ],
+  "summary": "Planner ueber OpenAI erstellt",
+  "finalVerdict": "Die geforderten Prüfinhalte können nicht bewertet werden, da keine Ausführungsergebnisse, Verzeichnisstruktur oder Testdatei (testplanner.txt) vorgelegt wurden.",
+  "finalSummary": "Paket blockiert",
+  "blockedReason": "Existenz von testplanner.txt nicht nachweisbar | Kein Klartextinhalt der Dummy-Testdatei erkennbar | Keine Bestätigung, dass nur eine Datei erzeugt wurde | Unklar, ob geschützte Bereiche und Projektregeln eingehalten wurden | Notwendige Artefakte des Schritts fehlen für Review | Einfluss auf bestehende Dateien oder Bereiche kann nicht ausgeschlossen werden | Unbeabsichtigte, nicht prüfbare Seiteneffekte möglich"
+}

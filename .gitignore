@@ -1,0 +1,9 @@
+﻿node_modules/
+logs/
+Repo-DC.zip
+_patch_backups/
+.env
+.DS_Store
+Thumbs.db
+*.log
+*.bak

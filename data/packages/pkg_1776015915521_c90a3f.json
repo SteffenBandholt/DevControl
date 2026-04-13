@@ -1,0 +1,140 @@
+{
+  "id": "pkg_1776015915521_c90a3f",
+  "projectId": "bbm-protokoll",
+  "projectName": "BBM-Protokoll",
+  "createdAt": "2026-04-12T17:45:15.521Z",
+  "updatedAt": "2026-04-12T20:20:07.368Z",
+  "status": "finished",
+  "priority": "normal",
+  "strictness": "conservative",
+  "rawGoal": "beim laden des offenen protokoll muss die Topsliste angezeigt werden",
+  "packageName": "Topsliste-Anzeige beim Laden des offenen Protokolls (React-Insel-Vorbereitung)",
+  "packageType": "refactor",
+  "goal": [
+    "Die Topsliste wird beim Laden eines offenen Protokolls sichtbar angezeigt, ohne bestehende globale Strukturen umzubauen.",
+    "Es findet ein erster, möglichst kleiner Integrationsschritt statt, der die aktuelle Architektur respektiert."
+  ],
+  "scope": [
+    "Analyse, wo und wie aktuell das offene Protokoll geladen wird.",
+    "Identifikation, wo die Topsliste eingefügt/angezeigt werden kann.",
+    "Einbau eines Platzhalters oder Hooks für die Topsliste nach minimal-invasivem Prinzip (z.B. als React-Insel oder gezieltes Legacy-Update im View).",
+    "Keine Änderung am Router, globaler App-Shell, IPC oder globalen Stores.",
+    "Kein Umbau der existenten Lade-Logik, sofern nicht zwingend nötig."
+  ],
+  "doNotTouch": [
+    "Router-Logik",
+    "App-Shell",
+    "Preload/IPC-Anbindung",
+    "Nicht betroffene Views und Module",
+    "Globale State-Struktur"
+  ],
+  "constraints": [
+    "Änderung bleibt lokal auf die Stelle beschränkt, wo ein offenes Protokoll geladen/angezeigt wird.",
+    "Falls Topsliste noch nicht als Komponente vorliegt: Nur Platzhalter einbauen, keine vollwertige Komponente entwickeln.",
+    "Keine ungetesteten Annahmen über globale Kontext- oder Ladewege treffen.",
+    "Keine Änderungen an geschützten Bereichen.",
+    "Bestehende Anzeige- oder Lade-Routinen werden nicht verändert, es sei denn, der direkte Einbau der Topsliste macht das zwingend erforderlich."
+  ],
+  "successCriteria": [
+    "Nach Laden eines offenen Protokolls erscheint (zumindest als Dummy) die Topsliste sichtbar im vorgesehenen Bereich der View.",
+    "Die App läuft weiterhin anstandslos.",
+    "Keiner der geschützten Bereiche ist betroffen.",
+    "Manueller Check anhand der App-Oberfläche möglich: die Topsliste oder ihr Platzhalter wird sichtbar."
+  ],
+  "abortCriteria": [
+    "Topsliste kann nur durch Handling von Routing/IPC/Shell eingefügt werden.",
+    "Es zeigt sich, dass der Bereich des offenen Protokolls zu komplex oder global verflochten für einen kleinen Umbau ist.",
+    "Tests, Build oder Smoke-Checks schlagen unerwartet fehl.",
+    "Unklare fachliche Annahmen über die Topsliste wären nötig."
+  ],
+  "internalSteps": [
+    {
+      "id": "step_1776015915522_feb2ba",
+      "order": 1,
+      "status": "blocked",
+      "title": "Identifiziere Lade-/Anzeigepunkt des offenen Protokolls und platziere einen sichtbaren Topsliste-Platzhalter",
+      "instructions": "Untersuche, in welcher View/Klasse/Datei das offene Protokoll geladen und die Hauptinhalte angezeigt werden. Baue an geeigneter Stelle (z.B. im Rendering/Render-Method/JSX-Code oder Template) einen klar sichtbaren Dummy/Platzhalter für die Topsliste ein, z.B. ein <div> oder React-Komponentenaufruf wie <TopslisteDummy/>. Keine Logik oder echte Datenanbindung in diesem Schritt. Stelle sicher, dass nach dem Öffnen eines Protokolls der Platzhalter klar sichtbar ist. Dokumentiere betroffene Dateien und prüfe nach Einbau mit einem Smoke-Test, ob die Anwendung weiterhin normal arbeitet.",
+      "createdAt": "2026-04-12T17:45:15.522Z",
+      "startedAt": "2026-04-12T19:10:35.628Z",
+      "finishedAt": "2026-04-12T19:10:35.657Z",
+      "runId": "run_1776021035629_8376a0",
+      "reviewId": "rev_1776021040894_153025"
+    },
+    {
+      "id": "step_1776021040898_b8e8f9",
+      "order": 2,
+      "status": "blocked",
+      "title": "Dummy-Platzhalter für Topsliste durch echte Komponente ersetzen",
+      "instructions": "Implementiere oder integriere nun die echte (evtl. zunächst funktionsreduzierte) Topsliste-Komponente an exakt derselben, bereits vorbereiteten Stelle. Bleibe weiterhin streng lokal und beachte die Paketregeln. Sorge dafür, dass Anzeige und Lademechanik anderer Bestandteile davon unberührt bleiben.",
+      "createdAt": "2026-04-12T19:10:40.898Z",
+      "startedAt": "2026-04-12T19:10:40.903Z",
+      "finishedAt": "2026-04-12T19:10:40.953Z",
+      "runId": "run_1776021040907_ce160f",
+      "reviewId": "rev_1776021045518_5e6676"
+    },
+    {
+      "id": "step_1776021045519_b55adf",
+      "order": 3,
+      "status": "blocked",
+      "title": "Austausch des Dummy-Platzhalters gegen echte (ggf. noch rudimentäre) Topsliste-Komponente",
+      "instructions": "Implementiere, falls noch nicht vorhanden, eine erste echte Topsliste-Komponente, die minimal Daten anzeigen kann. Ersetze den Dummy durch diese Komponente, ohne bestehende globale Strukturen oder geschützte Bereiche zu verändern. Sorge dafür, dass die Topsliste nach wie vor sichtbar ist und die App stabil läuft.",
+      "createdAt": "2026-04-12T19:10:45.519Z",
+      "startedAt": "2026-04-12T19:10:45.520Z",
+      "finishedAt": "2026-04-12T19:10:45.557Z",
+      "runId": "run_1776021045521_001b81",
+      "reviewId": "rev_1776021049891_1144ff"
+    },
+    {
+      "id": "step_1776021049893_804504",
+      "order": 4,
+      "status": "blocked",
+      "title": "Komponententest bzw. Verification der Integration",
+      "instructions": "Führe einen Test (manuell oder automatisiert) durch, um sicherzustellen, dass die Topsliste/der Platzhalter zuverlässig beim Laden eines offenen Protokolls angezeigt wird und keine Seiteneffekte auftreten (UI, Laden, Usability). Dokumentiere Auffälligkeiten und bestätige Sichtbarkeit und Unabhängigkeit der Änderung.",
+      "createdAt": "2026-04-12T19:10:49.894Z",
+      "startedAt": "2026-04-12T19:10:49.895Z",
+      "finishedAt": "2026-04-12T19:10:49.916Z",
+      "runId": "run_1776021049895_f14df5",
+      "reviewId": "rev_1776021053818_0fe313"
+    },
+    {
+      "id": "step_1776021053820_b61f07",
+      "order": 5,
+      "status": "blocked",
+      "title": "Topsliste als funktionale Komponente integrieren",
+      "instructions": "Ersetze den Platzhalter durch eine echte, minimal funktionale Topsliste-Komponente. Achte erneut strikt darauf, dass Änderungen auf die entsprechende Protokoll-View beschränkt bleiben und keinerlei globale Strukturen unbeabsichtigt betroffen sind. Baue verlässliche Komponententests für das neue Modul ein.",
+      "createdAt": "2026-04-12T19:10:53.820Z",
+      "startedAt": "2026-04-12T19:10:53.821Z",
+      "finishedAt": "2026-04-12T19:10:53.846Z",
+      "runId": "run_1776021053822_bd8bf9",
+      "reviewId": "rev_1776021058249_da014e"
+    },
+    {
+      "id": "step_1776021058251_a66e15",
+      "order": 6,
+      "status": "blocked",
+      "title": "Manueller Sichtcheck und Code-Review der Integration",
+      "instructions": "Überprüfe im laufenden System, ob nach dem Laden eines offenen Protokolls die Topsliste oder der eingefügte Platzhalter klar sichtbar ist und keine Fehler auftreten. Validere per kurzem Code-Review, dass die Einbindung tatsächlich lokal bleibt und keine Nebeneffekte für App-Shell, Routing oder andere Bereiche bestehen.",
+      "createdAt": "2026-04-12T19:10:58.251Z",
+      "startedAt": "2026-04-12T19:10:58.253Z",
+      "finishedAt": "2026-04-12T19:10:58.293Z",
+      "runId": "run_1776021058255_a1ca30",
+      "reviewId": "rev_1776021061682_8166bf"
+    }
+  ],
+  "summary": "Planner ueber OpenAI erstellt",
+  "finalVerdict": "gut",
+  "finalSummary": "Keine weiteren Schritte geplant.",
+  "packageReport": {
+    "achieved": [
+      "Die Topsliste oder ein sichtbarer Platzhalter erscheint nach Laden eines Protokolls an der vorgesehenen Stelle.",
+      "Kein Eingriff in geschützte Bereiche oder globale Strukturen.",
+      "Manueller Sichtcheck in der UI möglich.",
+      "Die App läuft weiterhin stabil.",
+      "Änderungen sind lokal auf die Protokollansicht beschränkt.",
+      "Keine Annahmen über globale State- oder Ladewege getroffen."
+    ],
+    "notAchieved": [],
+    "ruleViolations": [],
+    "risks": []
+  }
+}

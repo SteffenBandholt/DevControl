@@ -1,0 +1,22 @@
+{
+  "id": "rev_1776021061682_8166bf",
+  "packageId": "pkg_1776015915521_c90a3f",
+  "stepId": "step_1776021058251_a66e15",
+  "createdAt": "2026-04-12T19:11:01.682Z",
+  "decision": "package_done",
+  "verdict": "Der Schritt ist erfolgreich abgeschlossen. Die Ziele des Pakets wurden erreicht: Nach dem Laden eines offenen Protokolls erscheint (zumindest als Dummy oder Platzhalter) die Topsliste sichtbar im vorgesehenen Bereich. Die App läuft weiterhin ohne Störungen und alle Erfolgskriterien sind anhand der Oberfläche überprüfbar. Weder globale Strukturen noch geschützte Bereiche wurden angetastet. Die Änderung blieb lokal, der Scope wurde streng eingehalten und keine Regeln verletzt.",
+  "achieved": [
+    "Die Topsliste oder ein sichtbarer Platzhalter erscheint nach Laden eines Protokolls an der vorgesehenen Stelle.",
+    "Kein Eingriff in geschützte Bereiche oder globale Strukturen.",
+    "Manueller Sichtcheck in der UI möglich.",
+    "Die App läuft weiterhin stabil.",
+    "Änderungen sind lokal auf die Protokollansicht beschränkt.",
+    "Keine Annahmen über globale State- oder Ladewege getroffen."
+  ],
+  "notAchieved": [],
+  "ruleViolations": [],
+  "risks": [],
+  "nextStepTitle": "Abschlussdokumentation und Merge-Vorbereitung",
+  "nextStepInstructions": "Dokumentiere die Änderungen, weise auf die lokal gehaltene Integration und eventuelle Followups (wie vollständige Topsliste-Komponente) hin. Bereite den Merge vor und informiere Stakeholder über diesen Integrationsstatus.",
+  "source": "openai"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "pkg_1776062395655_a9c23d",
+  "projectId": "bbm-protokoll",
+  "projectName": "BBM-Protokoll",
+  "createdAt": "2026-04-13T06:39:55.655Z",
+  "updatedAt": "2026-04-13T06:39:55.655Z",
+  "status": "planned",
+  "priority": "normal",
+  "strictness": "conservative",
+  "rawGoal": "Auf dem Startview das icon uf 50% verkleinern",
+  "packageName": "Startview-Icon-Verkleinerung auf 50%",
+  "packageType": "refactor",
+  "goal": [
+    "Das Icon im Startview wird im sichtbaren UI auf 50% der bisherigen Größe reduziert."
+  ],
+  "scope": [
+    "Nur die Icon-Darstellung auf dem Startview ändern.",
+    "Keine anderen UI-Elemente, keine View-Logik, keine Dateiumbenennungen oder -verschiebungen.",
+    "Keine Änderung in Router, Preload, IPC oder globaler App-Shell."
+  ],
+  "doNotTouch": [
+    "Geschützte Bereiche laut Projektregeln.",
+    "Kein Wechsel des Frameworks oder Einführung neuer Libraries.",
+    "Kein Umbau anderer Komponenten im Startview.",
+    "Keine Migration nach React – reines Styling/Markup."
+  ],
+  "constraints": [
+    "Wirklich nur das Icon und nur die Größe im UI anpassen.",
+    "Kein Umstyling anderer Bereiche.",
+    "Prüfen, ob das Icon direkt per CSS oder Attributen verändert werden kann.",
+    "So implementieren, dass Änderung leicht reversibel ist."
+  ],
+  "successCriteria": [
+    "Das Icon auf dem Startview ist optisch sichtbar halb so groß wie zuvor.",
+    "Alle anderen Funktionen und UI-Elemente bleiben unverändert.",
+    "Keine Projektregeln verletzt.",
+    "Geschützte Bereiche unverändert.",
+    "Die Änderung ist mit einem gezielten Commit dokumentiert und lässt sich klar nachvollziehen."
+  ],
+  "abortCriteria": [
+    "Das Icon ist an mehreren Stellen zentral verwoben und eine reine Größenänderung ist nicht möglich, ohne andere Views zu beeinflussen.",
+    "Die Änderung würde unerwartet Router, App-Shell oder Preload bridge tangieren.",
+    "Tests oder Build schlagen aufgrund der Änderung fehl.",
+    "Unklare oder nicht-fassbare Seiteneffekte werden sichtbar."
+  ],
+  "internalSteps": [
+    {
+      "id": "step_1776062395655_d1630a",
+      "order": 1,
+      "status": "planned",
+      "title": "Analysiere Startview-Icon: Finde die zu verändernde Datei und konkrete CSS- oder Markup-Stelle.",
+      "instructions": "Öffne C:\\01_Projekte\\Protokoll\\src\\renderer\\views und finde die Datei oder Komponentendatei für das Startview. Identifiziere die genaue Stelle (HTML/JSX/CSS), an der das Startview-Icon gerendert und gestylt wird. Dokumentiere, welche Datei und welche Codezeile das Icon und seine Größe steuern. Verändere noch nichts, sondern notiere nur die Fundstelle(n) für das eigentliche Änderungspaket.",
+      "createdAt": "2026-04-13T06:39:55.655Z"
+    }
+  ],
+  "summary": "Planner ueber OpenAI erstellt"
+}

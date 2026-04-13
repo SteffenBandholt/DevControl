@@ -1,0 +1,166 @@
+﻿<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DevControl</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="toolbar">
+      <div class="brand-block">
+        <h1>DevControl</h1>
+        <p>Pakete statt Botendienst</p>
+      </div>
+
+      <div class="toolbar-main">
+        <div class="toolbar-row compact-row">
+          <label for="projectSelect">Projekt</label>
+          <select id="projectSelect"></select>
+          <button id="setProjectBtn" class="secondary" data-busy-label="Aktiviere ...">Aktivieren</button>
+          <button id="validateProjectBtn" class="secondary" data-busy-label="Prüfe ...">Prüfen</button>
+          <button id="toggleProjectFormBtn" class="secondary">+ Projekt</button>
+          <button id="toggleComposerBtn">Neues Paket</button>
+        </div>
+        <div id="projectSummary" class="toolbar-subline muted">Kein Projekt geladen.</div>
+      </div>
+
+      <div class="status-panel">
+        <div class="status-label">System</div>
+        <div id="globalStatus" class="status-chip status-ready">Bereit</div>
+        <div id="globalStatusDetail" class="status-detail muted">Keine laufende Aktion.</div>
+      </div>
+    </header>
+
+    <section id="projectFormWrap" class="panel hidden form-panel">
+      <div class="panel-head">
+        <h2>Projekt hinzufügen</h2>
+      </div>
+      <form id="projectForm" class="stack-form two-col">
+        <div>
+          <label>Name</label>
+          <input id="projectName" placeholder="z. B. MeineElectronApp" />
+        </div>
+        <div class="span-2">
+          <label>Projektpfad</label>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <input id="projectPath" placeholder="C:\\01_Projekte\\MeineElectronApp" style="flex:1;" />
+            <button type="button" id="chooseProjectPathBtn" class="secondary">Ordner wählen</button>
+          </div>
+        </div>
+        <div class="span-2">
+          <label>Agents.md Pfad</label>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <input id="agentsFile" placeholder="C:\\01_Projekte\\MeineElectronApp\\Agents.md" style="flex:1;" />
+            <button type="button" id="chooseAgentsFileBtn" class="secondary">Agents.md wählen</button>
+          </div>
+        </div>
+        <div>
+          <label>Geschützte Bereiche</label>
+          <textarea id="protectedAreas" rows="3" placeholder="renderer"></textarea>
+        </div>
+        <div>
+          <label>Standardregeln</label>
+          <textarea id="defaultConstraints" rows="3" placeholder="Bestehendes Verhalten erhalten&#10;Keine unnötigen Umbenennungen"></textarea>
+        </div>
+        <div class="span-2 row-actions">
+          <button type="submit" id="saveProjectBtn" data-busy-label="Speichere Projekt ...">Projekt speichern</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="composerWrap" class="panel form-panel hidden">
+      <div class="panel-head">
+        <h2>Neues Paket</h2>
+        <div class="muted">Erst Vorschlag ansehen, dann übernehmen.</div>
+      </div>
+      <form id="packageForm" class="stack-form composer-grid">
+        <div class="span-3">
+          <label>Ziel / Rohauftrag</label>
+          <div class="composer-help-text">Beschreibe kurz, was erreicht werden soll. Ein klarer Satz reicht. Details kannst du spÃ¤ter schÃ¤rfen.</div>
+<textarea id="goalText" rows="3" placeholder="z. B. IPC aus main.js weiter modularisieren. Renderer nicht anfassen." placeholder="Zum Beispiel: IPC aus main.js weiter modularisieren, Renderer nicht anfassen, konservativ"></textarea>
+        </div>
+        <div>
+          <label>Pakettyp</label>
+          <select id="packageType">
+            <option value="refactor">refactor</option>
+            <option value="feature">feature</option>
+            <option value="bugfix">bugfix</option>
+            <option value="cleanup">cleanup</option>
+            <option value="review-only">review-only</option>
+          </select>
+        </div>
+        <div>
+          <label>Priorität</label>
+          <select id="priority">
+            <option value="normal">normal</option>
+            <option value="hoch">hoch</option>
+            <option value="niedrig">niedrig</option>
+          </select>
+        </div>
+        <div>
+          <label>Strenge</label>
+          <select id="strictness">
+            <option value="conservative">conservative</option>
+            <option value="normal">normal</option>
+            <option value="aggressive">aggressive</option>
+          </select>
+        </div>
+        <div class="span-2">
+          <label>Harte Zusatzgrenzen</label>
+          <textarea id="hardConstraints" rows="3" placeholder="Renderer nicht anfassen&#10;Keine unnötigen Umbenennungen" placeholder="Optional: Renderer nicht anfassen, keine Umbenennungen, keine neuen Globals"></textarea>
+        </div>
+        <div class="span-3 row-actions">
+          <button id="previewPlannerBtn" type="submit" data-busy-label="Erstelle Vorschlag ...">Paket vorschlagen</button>
+          <button type="button" id="acceptPlannerBtn" class="secondary" data-busy-label="Speichere Paket ..." disabled>Vorschlag übernehmen</button>
+          <button type="button" id="clearPlannerBtn" class="secondary" disabled>Vorschlag verwerfen</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="projectValidationBox" class="panel slim-note muted">Projektprüfung wird geladen ...</section>
+
+    <main class="workspace-shell">
+      <aside class="sidebar panel">
+        <div class="panel-head sticky-head">
+          <h2>Pakete</h2>
+          <button id="reloadPackagesBtn" class="secondary" data-busy-label="Lade Liste ...">Aktualisieren</button>
+        </div>
+        <div id="packageList" class="package-list"></div>
+      </aside>
+
+      <section class="workspace panel">
+        <div class="panel-head workspace-head">
+          <div>
+            <h2 id="workspaceTitle">Paketansicht</h2>
+            <div id="workspaceHint" class="muted">Links ein Paket auswählen oder oben ein neues Paket planen.</div>
+          </div>
+          <div class="workspace-actions">
+            <button id="runPackageBtn" data-busy-label="Paket läuft ..." disabled>Weiter / starten</button>
+            <button id="refreshSelectedBtn" class="secondary" data-busy-label="Lade Paket ..." disabled>Aktualisieren</button>
+          </div>
+        </div>
+        <div id="workspaceNotice" class="inline-status hidden"></div>
+        <div id="workspaceBusyOverlay" class="workspace-overlay hidden" aria-live="polite">
+          <div class="workspace-overlay-card">
+            <div class="spinner" aria-hidden="true"></div>
+            <div>
+              <div class="overlay-title">DevControl arbeitet ...</div>
+              <div id="workspaceBusyText" class="muted">Bitte warten.</div>
+            </div>
+          </div>
+        </div>
+        <div id="workspaceContent" class="workspace-content empty-state">
+          Noch kein Paket ausgewählt.
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+  <script src="/project-select-fix.js"></script>
+</body>
+</html>
+
+
