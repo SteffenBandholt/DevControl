@@ -27,3 +27,4 @@ Kurze manuelle Smoke-Tests (Alltagssprache)
    - "Beenden" klicken → App zeigt beendete Meldung; Server beendet sich sauber.
 
 Hinweis: Bei Fehlern zuerst Server‑Logs und Browser‑Console prüfen.
+Hinweis: Für wiederholbare API-Checks steht ein einfacher Helfer zur Verfügung: `tests/api-project-tests.js` (lokal, development only).

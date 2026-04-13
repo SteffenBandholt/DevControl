@@ -8,7 +8,8 @@
   "scripts": {
     "start": "node app/server.js",
     "dev": "node app/server.js",
-    "init": "powershell -ExecutionPolicy Bypass -File .\\scripts\\init-devcontrol.ps1"
+    "init": "powershell -ExecutionPolicy Bypass -File .\\scripts\\init-devcontrol.ps1",
+    "test:projects-api": "node tests/api-project-tests.js"
   },
   "dependencies": {
     "express": "^4.21.2"

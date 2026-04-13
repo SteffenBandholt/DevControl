@@ -97,7 +97,6 @@ function addProject(root, project) {
   if (!normalized.projectPath) throw new Error("Projektpfad fehlt");
   normalized.id = createUniqueProjectId(config.projects, normalized.id || normalized.name);
   config.projects.push(normalized);
-  if (!config.activeProjectId) config.activeProjectId = normalized.id;
   saveProjectsConfig(root, config);
   return normalized;
 }
@@ -123,24 +122,39 @@ function validateProjectProfile(profile) {
       info: []
     };
   }
-
-  const projectPathExists = pathExists(profile.projectPath);
-  const agentsFileExists = pathExists(profile.agentsFile);
+  let projectPathExists = false;
+  let agentsFileExists = false;
 
   if (!profile.projectPath) {
     issues.push("Projektpfad fehlt.");
-  } else if (!projectPathExists) {
-    issues.push("Projektpfad existiert nicht.");
   } else {
-    info.push("Projektpfad gefunden.");
+    try {
+      const st = fs.statSync(profile.projectPath);
+      if (!st.isDirectory()) {
+        issues.push("Projektpfad ist kein Verzeichnis.");
+      } else {
+        projectPathExists = true;
+        info.push("Projektpfad gefunden.");
+      }
+    } catch (err) {
+      issues.push("Projektpfad existiert nicht oder ist nicht zugreifbar.");
+    }
   }
 
   if (!profile.agentsFile) {
     issues.push("Agents.md Pfad fehlt.");
-  } else if (!agentsFileExists) {
-    issues.push("Agents.md wurde nicht gefunden.");
   } else {
-    info.push("Agents.md gefunden.");
+    try {
+      const st = fs.statSync(profile.agentsFile);
+      if (!st.isFile()) {
+        issues.push("Agents.md Pfad ist kein Dateipfad.");
+      } else {
+        agentsFileExists = true;
+        info.push("Agents.md gefunden.");
+      }
+    } catch (err) {
+      issues.push("Agents.md wurde nicht gefunden oder ist nicht zugreifbar.");
+    }
   }
 
   return {
@@ -199,4 +213,6 @@ module.exports = {
   loadAgentsText,
   loadRulesBundle,
   validateProjectProfile
+  ,slugify
 };
+

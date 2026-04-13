@@ -8,6 +8,7 @@ const {
   addProject,
   setActiveProject,
   validateProjectProfile,
+  slugify,
   getActiveProject
 } = require("./rulesLoader");
 const { planPackageDraft, buildPackageFromDraft } = require("./planner");
@@ -86,17 +87,37 @@ app.post("/api/projects", (req, res) => {
       }
     }
 
-    // Prevent duplicate projects by projectPath or name
+    // Prevent duplicate projects by projectPath, agentsFile, name or stable id
     try {
       const cfg = loadProjectsConfig(root);
       const newName = String(req.body.name || "").trim();
-      if (projectPath) {
-        const dup = cfg.projects.find((p) => p.projectPath && path.resolve(p.projectPath) === path.resolve(projectPath));
+      const normalizePath = (p) => {
+        try {
+          let r = path.resolve(String(p || ""));
+          if (process.platform === "win32") r = r.toLowerCase();
+          return r.replace(/[\\/]+$/g, "");
+        } catch {
+          return String(p || "");
+        }
+      };
+      const newPathNorm = projectPath ? normalizePath(projectPath) : null;
+      const newAgentsNorm = agentsFile ? normalizePath(agentsFile) : null;
+      const newIdCandidate = slugify(newName || "");
+
+      if (newPathNorm) {
+        const dup = cfg.projects.find((p) => p.projectPath && normalizePath(p.projectPath) === newPathNorm);
         if (dup) return res.status(400).json({ error: "Projekt mit diesem Pfad existiert bereits." });
       }
+
+      if (newAgentsNorm) {
+        const dupA = cfg.projects.find((p) => p.agentsFile && normalizePath(p.agentsFile) === newAgentsNorm);
+        if (dupA) return res.status(400).json({ error: "Projekt mit dieser Agents.md existiert bereits." });
+      }
+
       if (newName) {
         const dupName = cfg.projects.find((p) => String(p.name || "").toLowerCase() === newName.toLowerCase());
-        if (dupName) return res.status(400).json({ error: "Projekt mit diesem Namen existiert bereits." });
+        const dupId = cfg.projects.find((p) => String(p.id || "").toLowerCase() === newIdCandidate.toLowerCase());
+        if (dupName || dupId) return res.status(400).json({ error: "Projekt mit diesem Namen oder ID existiert bereits." });
       }
     } catch (e) {
       // ignore load errors here, proceed to add

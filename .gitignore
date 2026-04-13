@@ -13,3 +13,6 @@ Thumbs.db
 *.swp
 *.~*
 server.js.bak2
+
+# Ignore config backups created by local API tests
+config/projects.json.bak*
